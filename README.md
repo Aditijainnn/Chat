@@ -36,58 +36,70 @@
 ## 🏗️ Installation
 
 ```bash
-git clone https://github.com/your-repo/Chat.git
-cd 
-pip install -r requirements.txt
-🌐 Set Environment Variables
-HUGGINGFACE_HUB_API_TOKEN: Your Hugging Face API token.
+1. git clone https://github.com/your-repo/Chat.git
+cd Chat
 
-GEMINI_API_KEY: Your Google Generative AI API key.
-
-▶️ Run the Application
+2. Install dependencies:
+    
 bash
-Copy
-Edit
-uvicorn main:app --reload
-🔌 API Endpoints
-POST /
-Request Body:
+    pip install -r requirements.txt
 
+3. Set environment variables:
+    - HUGGINGFACE_HUB_API_TOKEN: Your Hugging Face API token.
+    - GEMINI_API_KEY: Your Google Generative AI API key.
+
+4. Run the application:    
+bash
+    uvicorn main:app --reload
+
+
+## API Endpoints
+
+### Chat Endpoint
+- **URL**: /
+- **Method**: POST
+- **Request Body**:
+  
 json
-Copy
-Edit
-{
-  "query": "Your question here",
-  "chat_history": [
-    {"role": "user", "content": "Previous user message"},
-    {"role": "assistant", "content": "Previous assistant response"}
-  ]
-}
-Response:
+  {
+     "query": "Your question here",
+     "chat_history": [
+        {"role": "user", "content": "Previous user message"},
+        {"role": "assistant", "content": "Previous assistant response"}
+     ]
+  }
 
-json
-Copy
-Edit
-{
-  "response": "AI-generated response"
-}
-📄 Document Loading
-Supports:
-
-PDFs via PyPDFLoader
-
-JSON via LangChain Document parser
-
-.txt Files for additional context
-
-🧠 Vector Embeddings
-Model: sentence-transformers/all-MiniLM-L6-v2
-
-Powered by Hugging Face
-
-Stored and queried through Chroma DB
 
 ```
+
+
+
+## Document Loading
+
+The chatbot supports the following document types:
+- **PDFs**: Loaded using PyPDFLoader.
+- **JSON**: Parses JSON files into LangChain Document objects.
+- **Text Files**: Reads .txt files for additional context.
+
+## Vector Database
+
+- **Embeddings**: Uses Hugging Face's sentence-transformers/all-MiniLM-L6-v2 for feature extraction.
+- **Persistence**: Stores vectors in a Chroma database for efficient retrieval.
+
+## System Prompt
+
+The chatbot is designed to:
+- Provide detailed and actionable responses.
+- Use simple and clear language.
+- Offer culturally appropriate advice tailored to rural Indian women.
+
+## 📍 Example Use Case
+
+1. **User Query**: "What are the government schemes for women entrepreneurs?"
+2. **Response**:
+    - Detailed information about schemes.
+    - Eligibility criteria, required documents, and application process.
+    - Contact information for further assistance.
 
 
 ## 🔧 MVP (Minimum Viable Product)
@@ -134,18 +146,6 @@ Government schemes information
 
 Basic financial education
 
-
-
-## 📍 Example Use Case
-#### User Query: "What are the government schemes for women entrepreneurs?"
-
-#### Response:
-
-Lists available schemes (e.g., Stand Up India, MUDRA Yojana).
-
-Eligibility criteria, documents needed, how to apply.
-
-Links or contacts to nearby Common Service Centers (CSCs).
 
 
 ### 📬 Contact
